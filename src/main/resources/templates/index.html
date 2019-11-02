@@ -1,0 +1,52 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"	
+	  class="no-js" lang="en"> 
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	
+	<title>Java Star Group</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">
+    Java Star!
+  </a>
+</nav>
+
+<div class="container">
+
+	<div class="jumbotron">
+		<h1 class="jumbotron-heading">Hello Java Stars!</h1>
+	</div>
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="star : ${stars}">
+				<td><a th:text="${star.name}" th:href="|/form?name=${star.name}|" ></a></td> 
+				<td th:text="${star.phone}"></td>
+				<td th:text="${star.email}"></td>
+				<td><a  th:href="|/delete?name=${star.name}|" >Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<a href="/form" class="btn btn-primary" >Join Us!</a>
+	
+</div>
+
+</body>
+</html>
