@@ -3,14 +3,28 @@ package javastar.hello;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "stars", schema = "hello")
 public class Star {
 
 	@Id
+	@NotBlank(message = "Name is required")
+	@Size(min = 3, max = 255, message = "Minimum is 3 characters and maximum is 255")
 	private String name;
+	
+	@NotBlank(message = "Email is required")
+	@Size(min = 3, max = 255, message = "Minimum is 3 characters and maximum is 255")
+	@Email(message = "Not a valid email address")
 	private String email;
+	
+	@NotBlank(message = "Phone is required")
+	@Pattern(regexp = "[0-9\\+]+", message = "Not a valid phone number. Use only numbers and +")
+	@Size(min = 5, max = 10, message = "Minimum is 3 characters and maximum is 10")
 	private String phone;
 	
 	@Override

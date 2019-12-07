@@ -1,14 +1,14 @@
 package javastar.hello;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -55,7 +55,11 @@ public class HelloController {
 	}
 	
 	@PostMapping("/")
-	public String post(@ModelAttribute Star star) {
+	public String post(@Valid Star star, BindingResult bindingResult) {
+		if( bindingResult.hasErrors()) {
+			return "form";
+		}
+		
 		repo.save(star);
 		return "redirect:/";
 	}
