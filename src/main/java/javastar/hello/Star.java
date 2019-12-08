@@ -32,6 +32,11 @@ public class Star {
 	
 	private Date updateDate;
 	
+	@PreUpdate
+	public void preUpdate() {
+		updateDate = new Date();
+	}
+	
 	@Override
 	public String toString() {
 		return "Star [name=" + name + ", email=" + email + ", phone=" + phone + "]";
