@@ -31,6 +31,7 @@
 				<th>Name</th>
 				<th>Phone</th>
 				<th>Email</th>
+				<th>Update Date</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -39,6 +40,7 @@
 				<td><a th:text="${star.name}" th:href="|/form?name=${star.name}|" ></a></td> 
 				<td th:text="${star.phone}"></td>
 				<td th:text="${star.email}"></td>
+				<td th:text="${#dates.format(star.updateDate, 'd MMM yy hh:mma')}"></td>
 				<td><a  th:href="|/delete?name=${star.name}|" >Delete</a></td>
 			</tr>
 		</tbody>

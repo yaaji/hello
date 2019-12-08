@@ -1,5 +1,6 @@
 package javastar.hello;
 
+import java.util.Date;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -60,6 +61,7 @@ public class HelloController {
 			return "form";
 		}
 		
+		star.setUpdateDate(new Date());
 		repo.save(star);
 		return "redirect:/";
 	}

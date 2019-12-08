@@ -1,5 +1,7 @@
 package javastar.hello;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -26,6 +28,9 @@ public class Star {
 	@Pattern(regexp = "[0-9\\+]+", message = "Not a valid phone number. Use only numbers and +")
 	@Size(min = 5, max = 10, message = "Minimum is 3 characters and maximum is 10")
 	private String phone;
+	
+	
+	private Date updateDate;
 	
 	@Override
 	public String toString() {
@@ -71,6 +76,12 @@ public class Star {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 	
 	
