@@ -11,6 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "stars", schema = "hello")
 public class Star {
@@ -30,6 +32,7 @@ public class Star {
 	@Size(min = 5, max = 10, message = "Minimum is 3 characters and maximum is 10")
 	private String phone;
 	
+	@DateTimeFormat(pattern = "yyyy.MMM.dd.HH.mm.ss.SSS")
 	private Date updateDate;
 	
 	@PreUpdate
