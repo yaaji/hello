@@ -24,6 +24,11 @@ public class HelloController {
 		return "index";
 	}
 	
+	@GetMapping("/error")
+	public String error() {
+		return "error";
+	}
+	
 	@GetMapping("/form")
 	public String form(ModelMap model, @RequestParam(required = false) String name) {
 		

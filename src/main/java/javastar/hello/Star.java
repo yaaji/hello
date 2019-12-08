@@ -4,8 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -32,13 +32,10 @@ public class Star {
 	@Size(min = 5, max = 10, message = "Minimum is 3 characters and maximum is 10")
 	private String phone;
 	
+	@Version
 	@DateTimeFormat(pattern = "yyyy.MMM.dd.HH.mm.ss.SSS")
 	private Date updateDate;
-	
-	@PreUpdate
-	public void preUpdate() {
-		updateDate = new Date();
-	}
+
 	
 	@Override
 	public String toString() {
@@ -91,7 +88,5 @@ public class Star {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	
-	
 	
 }
