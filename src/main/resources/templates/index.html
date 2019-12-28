@@ -44,6 +44,30 @@
 				<td><a  th:href="|/delete?name=${star.name}|" >Delete</a></td>
 			</tr>
 		</tbody>
+		<tfoot class="table-light">
+			<tr class="text-muted small" style="text-transform:uppercase">
+				<td colspan="2" >
+					
+					Showing <span th:text="${stars.numberOfElements}">3</span> stars 
+					out of <span th:text="${stars.totalElements}">9</span>
+					
+					 
+					
+					
+				</td>
+				
+				<td colspan="3" style="text-align:right">
+					
+					<a th:href="|?page=${stars.number-1}|" th:if="${stars.hasPrevious()}">&larr; Previous</a>
+					Page <span th:text="${stars.number+1}">1</span> 
+					of <span th:text="${stars.totalPages}">5</span> 
+					
+					<a th:href="|?page=${stars.number+1}|" th:if="${stars.hasNext()}">Next &rarr;</a>
+				
+				</td>
+				
+			</tr>
+		</tfoot>
 	</table>
 	
 	<a href="/form" class="btn btn-primary" >Join Us!</a>

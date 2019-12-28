@@ -5,6 +5,9 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -19,8 +22,9 @@ public class HelloController {
 	StarsRepo repo;
 	
 	@GetMapping("/")
-	public String index(ModelMap model) {
-		model.addAttribute("stars", repo.findAll() );
+	public String index(@RequestParam(defaultValue = "0", required = false) int page, ModelMap model) {
+		PageRequest pagable = PageRequest.of(page, 5, Sort.by("name").ascending());
+		model.addAttribute("stars", repo.findAll(pagable) );
 		return "index";
 	}
 	
