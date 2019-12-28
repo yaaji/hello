@@ -1,10 +1,13 @@
 package javastar.hello;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -39,9 +42,13 @@ public class Star {
 	private Date updateDate;
 
 	
-	@ManyToOne
-	@JoinColumn(name = "skill_id")
-	private Skill skill;
+	@ManyToMany
+	@JoinTable(
+			name = "star_skills", catalog = "hello",
+			joinColumns = @JoinColumn(name = "star_name"),
+			inverseJoinColumns = @JoinColumn(name = "skill_id")
+	)
+	private Set<Skill> skills;
 	
 	@Override
 	public String toString() {
@@ -94,11 +101,10 @@ public class Star {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	public Skill getSkill() {
-		return skill;
+	public Set<Skill> getSkills() {
+		return skills;
 	}
-	public void setSkill(Skill skill) {
-		this.skill = skill;
+	public void setSkills(Set<Skill> skills) {
+		this.skills = skills;
 	}
-	
 }

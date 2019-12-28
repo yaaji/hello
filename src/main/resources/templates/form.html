@@ -9,7 +9,19 @@
 	
 	<title>Java Star Group</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#skills').select2({
+				allowClear: true,
+	    	    multiple: true
+			});
+		});
+	</script>
+	
 </head>
 <body>
 
@@ -63,13 +75,12 @@
 	<div class="form-group row">
 	  <label class="col-sm-2 col-form-label">Skill</label>
 	  <div class="col-sm-10">
-	  	<select required="required" 
-				th:class="|form-control ${#fields.hasErrors('skill')?'is-invalid':''}|"
-				th:field="*{skill}">
-			<option value=""></option>
+	  	<select required="required" id="skills"
+				th:class="|form-control ${#fields.hasErrors('skills')?'is-invalid':''}|"
+				th:field="*{skills}">
 	  		<option th:each="s : ${skills}" th:value="${s.id}" th:text="${s.name}"></option>
 	  	</select>
-		<div th:if="${#fields.hasErrors('skill')}" class="invalid-feedback" th:errors="*{skill}">Skill Error</div>
+		<div th:if="${#fields.hasErrors('skills')}" class="invalid-feedback" th:errors="*{skills}">Skill Error</div>
 	  </div>
 	</div>
 	

@@ -41,7 +41,9 @@
 				<td><a th:text="${star.name}" th:href="|/form?name=${star.name}|" ></a></td> 
 				<td th:text="${star.phone}"></td>
 				<td th:text="${star.email}"></td>
-				<td><span th:text="${star.skill}" class="badge badge-success"></span></td>
+				<td><span th:each="skill : ${star.skills}" 
+						th:text="${skill.name}" 
+						class="badge badge-success" style="margin-right:3px;"></span></td>
 				<td th:text="${#dates.format(star.updateDate, 'd MMM yy hh:mma')}"></td>
 				<td><a  th:href="|/delete?name=${star.name}|" >Delete</a></td>
 			</tr>
