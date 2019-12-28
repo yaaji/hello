@@ -5,7 +5,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -20,6 +19,9 @@ public class HelloController {
 	
 	@Autowired
 	StarsRepo repo;
+	
+	@Autowired
+	SkillsRepo skillsRepo;
 	
 	@GetMapping("/")
 	public String index(@RequestParam(defaultValue = "0", required = false) int page, ModelMap model) {
@@ -46,6 +48,7 @@ public class HelloController {
 		}
 		
 		model.addAttribute("star", star);
+		model.addAttribute("skills", skillsRepo.findAll() );
 		return "form";
 	}
 	

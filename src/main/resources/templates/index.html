@@ -31,6 +31,7 @@
 				<th>Name</th>
 				<th>Phone</th>
 				<th>Email</th>
+				<th>Skill</th>
 				<th>Update Date</th>
 				<th>Actions</th>
 			</tr>
@@ -40,13 +41,14 @@
 				<td><a th:text="${star.name}" th:href="|/form?name=${star.name}|" ></a></td> 
 				<td th:text="${star.phone}"></td>
 				<td th:text="${star.email}"></td>
+				<td><span th:text="${star.skill}" class="badge badge-success"></span></td>
 				<td th:text="${#dates.format(star.updateDate, 'd MMM yy hh:mma')}"></td>
 				<td><a  th:href="|/delete?name=${star.name}|" >Delete</a></td>
 			</tr>
 		</tbody>
 		<tfoot class="table-light">
 			<tr class="text-muted small" style="text-transform:uppercase">
-				<td colspan="2" >
+				<td colspan="3" >
 					
 					Showing <span th:text="${stars.numberOfElements}">3</span> stars 
 					out of <span th:text="${stars.totalElements}">9</span>

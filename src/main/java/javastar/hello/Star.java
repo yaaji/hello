@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.Email;
@@ -36,6 +38,10 @@ public class Star {
 	@DateTimeFormat(pattern = "yyyy.MMM.dd.HH.mm.ss.SSS")
 	private Date updateDate;
 
+	
+	@ManyToOne
+	@JoinColumn(name = "skill_id")
+	private Skill skill;
 	
 	@Override
 	public String toString() {
@@ -87,6 +93,12 @@ public class Star {
 	}
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+	public Skill getSkill() {
+		return skill;
+	}
+	public void setSkill(Skill skill) {
+		this.skill = skill;
 	}
 	
 }
